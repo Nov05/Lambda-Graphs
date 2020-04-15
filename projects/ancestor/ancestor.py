@@ -11,8 +11,9 @@ def earliest_ancestor(ancestors, starting_node):
 
     # find the longest path
     result = []
-    paths = [[starting_node]]
     visited = []
+    paths = [[starting_node]]
+    
     while paths:
         path = paths.pop(0)
         child = path[-1]
