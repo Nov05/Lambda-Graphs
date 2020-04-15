@@ -98,7 +98,8 @@ class Test(unittest.TestCase):
         sys.stdout = stdout_  # Restore stdout
 
     def test_bfs(self):
-        bfs = [1, 2, 4, 6]
+        # bfs = [1, 2, 4, 6]
+        bfs = [1, 2, 3, 4, 5, 6]
         self.assertListEqual(self.graph.bfs(1, 6), bfs)
 
     def test_dfs(self):
@@ -111,7 +112,8 @@ class Test(unittest.TestCase):
     def test_dfs_recursive(self):
         dfs = [
             [1, 2, 4, 6],
-            [1, 2, 4, 7, 6]
+            [1, 2, 4, 7, 6],
+            [1, 2, 3, 5, 4, 6]
         ]
         self.assertIn(self.graph.dfs_recursive(1,6), dfs)
 
