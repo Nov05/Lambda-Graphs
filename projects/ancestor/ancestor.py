@@ -9,6 +9,7 @@ def earliest_ancestor(ancestors, starting_node):
             parents[child] = {parent}
     print(f'parents: {parents}')
 
+    # find the longest path
     result = []
     paths = [[starting_node]]
     visited = []
