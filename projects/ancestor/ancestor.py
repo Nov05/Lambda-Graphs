@@ -13,7 +13,7 @@ def earliest_ancestor(ancestors, starting_node):
     result = []
     visited = []
     paths = [[starting_node]]
-    
+
     while paths:
         path = paths.pop(0)
         child = path[-1]
@@ -21,9 +21,9 @@ def earliest_ancestor(ancestors, starting_node):
             continue
 
         if child in parents:
-            for p in parents[child]:
+            for parent in parents[child]:
                 path_new = path.copy()
-                path_new.append(p)
+                path_new.append(parent)
                 paths.append(path_new)
         elif len(path) > len(result) \
         or (len(path)==len(result) and path[-1] < result[-1]):
