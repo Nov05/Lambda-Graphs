@@ -26,7 +26,7 @@ def earliest_ancestor(ancestors, starting_node):
                 path_new.append(parent)
                 paths.append(path_new)
         elif len(path) > len(result) \
-        or (len(path)==len(result) and path[-1] < result[-1]):
+        or (len(path) == len(result) and path[-1] < result[-1]):
             result = path
 
     print(f'longest path: {result}\n')
