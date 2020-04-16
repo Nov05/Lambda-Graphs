@@ -52,8 +52,6 @@ class Graph:
 
         while paths:
             vertex = paths.pop(0)
-            if vertex in visited:
-                continue
             ### Do something when the vertex is visited.
             print(vertex)
             visited.add(vertex)
@@ -70,7 +68,7 @@ class Graph:
         beginning from starting_vertex.
         """
         paths = [[starting_vertex]]
-        visited = set()
+        visited = []
 
         while paths:
             path = paths.pop(0)
@@ -79,7 +77,7 @@ class Graph:
                 continue
             # Do something when the vertex is visited.
             print(vertex)
-            visited.add(vertex)
+            visited.append(vertex)
 
             for i, neighbor in enumerate(self.get_neighbors(vertex)):
                 path_new = path.copy()
@@ -106,7 +104,7 @@ class Graph:
 
     def bfs(self, starting_vertex, destination_vertex):
         """
-        Return a list containing the shortest path from
+        Return a list containing a path from
         starting_vertex to destination_vertex in
         breath-first order.
         """
@@ -115,9 +113,6 @@ class Graph:
 
         while paths:
             vertex = paths.pop(0)
-            if vertex in visited:
-                continue
-            # print(vertex)
             visited.append(vertex)
             if vertex == destination_vertex:
                 return visited
@@ -127,6 +122,31 @@ class Graph:
                     continue
                 paths.append(neighbor)
 
+
+    def bfs_shortest(self, starting_vertex, destination_vertex):
+        """
+        Return a list containing the shortest path from
+        starting_vertex to destination_vertex in
+        breath-first order.
+        """        
+        paths = [[starting_vertex]]
+        visited = []
+
+        while paths:
+            path = paths.pop(0)
+            vertex = path[-1]
+            if vertex in visited:
+                continue
+            visited.append(vertex)
+
+            if vertex == destination_vertex:
+                return path
+
+            for i, neighbor in enumerate(self.get_neighbors(vertex)):
+                path_new = path.copy()
+                path_new.append(neighbor)
+                paths.append(path_new)
+            
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -142,9 +162,8 @@ class Graph:
             vertex = path[-1]
             if vertex in visited:
                 continue
-            # Do something when the vertex is visited.
-            # print(vertex)
             visited.append(vertex)
+
             if vertex == destination_vertex:
                 return visited
 
@@ -239,6 +258,12 @@ if __name__ == '__main__':
     Valid BFS path:
         [1, 2, 4, 6]
         [1, 2, 3, 4, 5, 6]
+    '''
+
+    print('bfs_shortest:', graph.bfs_shortest(1, 6))
+    '''
+    Valid BFS path:
+        [1, 2, 4, 6]
     '''
 
     print('dfs:', graph.dfs(1, 6))

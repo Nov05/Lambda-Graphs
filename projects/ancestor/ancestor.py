@@ -1,25 +1,18 @@
+from collections import defaultdict
+
 
 def earliest_ancestor(ancestors, starting_node):
     # convert input to edges
-    parents = {}
+    parents = defaultdict(set)
     for parent, child in ancestors:
-        if child in parents:
-            parents[child].add(parent)
-        else:
-            parents[child] = {parent}
+        parents[child].add(parent)
     print(f'parents: {parents}')
 
-    # find the longest path
-    result = []
-    visited = []
-    paths = [[starting_node]]
-
+    # find the longest path (dft/bft)
+    result, paths = [], [[starting_node]]
     while paths:
         path = paths.pop(0)
         child = path[-1]
-        if child in visited:
-            continue
-
         if child in parents:
             for parent in parents[child]:
                 path_new = path.copy()
