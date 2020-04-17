@@ -1,9 +1,5 @@
 import random 
 # from collections import defaultdict
-# local import
-import sys
-sys.path.insert(0, 'd:/github/Lambda-Graphs/projects/graph')
-from graph import Graph
 
 
 class User:
