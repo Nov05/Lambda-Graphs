@@ -20,6 +20,6 @@ begin_word = "sail"
 end_word = "boat"    
 ['sail', 'bail', 'boil', 'boll', 'bolt', 'boat']    
 
-beginWord = "hungry"   
-endWord = "happy"   
+begin_word = "hungry"   
+end_word = "happy"   
 None   
